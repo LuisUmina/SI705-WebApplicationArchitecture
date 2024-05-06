@@ -1,4 +1,4 @@
-# WEEK 2.1 - API
+# WEEK 2 - API REST & SPRING BOOT
 
 ## API
 Una API es una interfaz que conecta aplicaciones para que **compartan informacioon**.
@@ -29,61 +29,15 @@ Los verbos involucrados en un sistema REST son
     * **Meetricas:** Cuenta con servicios que permite consultar el estado de salud de la aplicacioon, permitiendo saber si la aplicacion estaa prendida o apagada, memoria utilizada y disponible, etc.
     * **Extensible:** Permite la creacioon de complementos, los cuales ayudan a que la comunidad de Software Libre cree nuevos moodulos que faciliten el desarrollo.
 
-# Creando un Proyecto para el Curso
-* **Paso 1:** Abrir IntelliJ IDEA
-* **Paso 2:** Crear un nuevo proyecto
-* **Paso 3:** Seleccionar Spring Initializr
-* **Paso 4:** Ingresar el nombre del proyecto
-* **Paso 5:** Seleccionar la ubicacioon del proyecto
-* **Paso 6:** Seleccionar el lenguaje de programacioon (Java)
-* **Paso 7:** Seleccionar el tipo de proyecto (Maven)   
-* **Paso 8:** Seleccionar el group (pe.edu.upc)
-* **Paso 9:** Seleccionar JDK (versioon 17)
-* **Paso 10:** Seleccionar la version de Spring Boot para el curso (versioon 3.2.4)
-* **Paso 10:** Agregar las dependencias necesarias
-    * Spring Web
-    * Spring Data JPA
-    * PostgreSQL Driver
-    * Spring Boot DevTools
-    * Lombok
-
-
-# Configuración del Archivo application.properties
-El archivo `application.properties` es utilizado en aplicaciones Spring Boot para configurar propiedades específicas de la aplicación, incluida la configuración de la base de datos.
-
-## Configuración de la Base de Datos
-
-```properties
-# Indica la base de datos a utilizar
-spring.jpa.database=postgresql
-
-# Determina si se generará un log de las queries que se ejecuten
-spring.jpa.show-sql=false
-
-# Determina la estrategia de creación de tablas por Hibernate
-spring.jpa.hibernate.ddl-auto=create
-
-# Indica la clase del controlador JDBC a utilizar
-spring.datasource.driver-class-name=org.postgresql.Driver
-
-# Indica la URL de la base de datos
-spring.datasource.url=jdbc:postgresql://localhost/dbDemoClaseRosaSemana2(Nombre de la base de datos)
-
-# Indica el usuario de la base de datos
-spring.datasource.username=postgres
-
-# Indica la contraseña de la base de datos
-spring.datasource.password=1234 (contrasenia)
-```
 
 # Proyecto Demo
 APP para gestionar peliculas de una productora.
 ## Product Backlog
-En la semana 2 se realizaraa la HU01 - HU02 - HU03 - HU04
-![Product Backlog](img_ApunterCurso/Captura%20de%20pantalla%202024-05-06%20032553.jpeg)
+En la semana 2 se realizaraa la HU01 - HU02
+![Product Backlog](img_ApuntesCurso/Captura%20de%20pantalla%202024-05-06%20032553.jpeg)
 
 ## Diagrama de Base de Datos
-![Diagrama de Base de Datos](img_ApunterCurso/Captura%20de%20pantalla%202024-05-06%20032614.jpeg)
+![Diagrama de Base de Datos](img_ApuntesCurso/Captura%20de%20pantalla%202024-05-06%20032614.jpeg)
 
 ---
 ---
@@ -124,7 +78,7 @@ En la semana 2 se realizaraa la HU01 - HU02 - HU03 - HU04
 * **Prooosito:** Carpeta que contiene las interfaces de servicios.
 * **Uso:** Para definir interfaces que especifican los métodos que deben ser implementados por las clases de servicio.
 
-![Estructura del Proyecto](img_ApunterCurso/Captura%20de%20pantalla%202024-05-06%20152931.jpeg)
+![Estructura del Proyecto](img_ApuntesCurso/Captura%20de%20pantalla%202024-05-06%20152931.jpeg)
 
 
 ## Notaciones Comunes
@@ -152,27 +106,6 @@ En la semana 2 se realizaraa la HU01 - HU02 - HU03 - HU04
 ### @Column(name = "Nombre", nullable = false, length = 20)
 * **Propoosito:** Anotacioon que especifica las propiedades de una columna en la base de datos.
 * **Uso:** Para definir el nombre de la columna, si es nullable y su longitud máxima.
-
-# WEEK 2.2 - API
-
-## Dependencias Agregadas al proyecto
-
-```xml
-        <!-- MODEL MAPPER --> <!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
-        <dependency>
-            <groupId>org.modelmapper</groupId>
-            <artifactId>modelmapper</artifactId>
-            <version>3.2.0</version>
-        </dependency>
-        <!-- SWAGGER --> <!-- LINK -->
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.4.0</version>
-        </dependency>
-```
-
-## Maas Notaciones Comunes
 ### @RestController
 * **Propoosito:** Anotacioon que combina las anotaciones `@Controller` y `@ResponseBody`, lo que significa que Spring interpretaraa el resultado del meetodo como datos JSON.
 * **Uso:** Para marcar una clase como un controlador REST en Spring, que se encarga de gestionar las solicitudes HTTP y devolver respuestas en formato JSON.
@@ -188,7 +121,6 @@ En la semana 2 se realizaraa la HU01 - HU02 - HU03 - HU04
 ### @PutMapping("/ruta")
 * **Propoosito:** Anotacioon que mapea las solicitudes HTTP PUT a meetodos de controlador en clases anotadas con `@Controller`.
 * **Uso:** Para asignar una ruta de acceso especiifica a un meetodo de controlador que responde a solicitudes HTTP PUT.
-
 ### @DeleteMapping("/ruta")
 * **Propoosito:** Anotacioon que mapea las solicitudes HTTP DELETE a meetodos de controlador en clases anotadas con `@Controller`.
 * **Uso:** Para asignar una ruta de acceso especiifica a un meetodo de controlador que responde a solicitudes HTTP DELETE.
@@ -201,6 +133,10 @@ En la semana 2 se realizaraa la HU01 - HU02 - HU03 - HU04
 ### @Autowired
 * **Propoosito:** Anotacioon que se utiliza para realizar la inyeccioon de dependencias en Spring.
 * **Uso:** Para inyectar automaaticamente instancias de beans administradas por Spring en un campo, método o constructor.
+
+---
+---
+---
 
 ## ModelMapper
 El `ModelMapper` es una biblioteca de Java que simplifica el mapeo de objetos de un tipo a otro. En el contexto de una aplicación Spring Boot, se utiliza comúnmente para mapear entre entidades JPA y DTOs (Data Transfer Objects).
@@ -220,10 +156,85 @@ public void insertar(@RequestBody MovieDTO movieDTO) {
 }
 ```
 
+# CREACIOON / CONFIGURACIOON DEL PROYECTO
+
+# Creando un Proyecto para el Curso
+* **Paso 1:** Abrir IntelliJ IDEA
+* **Paso 2:** Crear un nuevo proyecto
+* **Paso 3:** Seleccionar Spring Initializr
+* **Paso 4:** Ingresar el nombre del proyecto
+* **Paso 5:** Seleccionar la ubicacioon del proyecto
+* **Paso 6:** Seleccionar el lenguaje de programacioon (Java)
+* **Paso 7:** Seleccionar el tipo de proyecto (Maven)   
+* **Paso 8:** Seleccionar el group (pe.edu.upc)
+* **Paso 9:** Seleccionar JDK (versioon 17)
+* **Paso 10:** Seleccionar la version de Spring Boot para el curso (versioon 3.2.4)
+* **Paso 10:** Agregar las dependencias necesarias
+    * Spring Web
+    * Spring Data JPA
+    * PostgreSQL Driver
+    * Spring Boot DevTools
+    * Lombok
+
+# Configuración del Archivo application.properties
+El archivo `application.properties` es utilizado en aplicaciones Spring Boot para configurar propiedades específicas de la aplicación, incluida la configuración de la base de datos.
+```properties
+# Indica la base de datos a utilizar
+spring.jpa.database=postgresql
+
+# Determina si se generará un log de las queries que se ejecuten
+spring.jpa.show-sql=false
+
+# Determina la estrategia de creación de tablas por Hibernate
+spring.jpa.hibernate.ddl-auto=create
+
+# Indica la clase del controlador JDBC a utilizar
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# Indica la URL de la base de datos
+spring.datasource.url=jdbc:postgresql://localhost/dbDemoClaseRosaSemana2(Nombre de la base de datos)
+
+# Indica el usuario de la base de datos
+spring.datasource.username=postgres
+
+# Indica la contraseña de la base de datos
+spring.datasource.password=1234 (contrasenia)
+```
+
+# Dependencias Agregadas al proyecto
+```xml
+        <!-- MODEL MAPPER --> <!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+        <!-- SWAGGER --> <!-- LINK -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+```
+
 NOTA: 
-* @Autowired -> Siempre debe estr en el apartado de ServiceImplement (@Service)
+* @Autowired -> Siempre debe estr en el apartado de ServiceImplement (@Service) Y Controllers (@RestController)
 * Swagger -> La ruta para consultar el Swagger es: ```http://localhost:8080/swagger-ui.html```
 
+---
+---
+---
+---
+---
+# WEEK 3 - SPRING DATA JPA
 
+PENDING . . .
 
+# Proyecto Demo
+APP para gestionar peliculas de una productora.
+## Product Backlog
+En la semana 3 se realizaraa la HU03 - HU04 - HU05
+![Product Backlog](img_ApuntesCurso/Captura%20de%20pantalla%202024-05-06%20032553.jpeg)
 
+## Diagrama de Base de Datos
+![Diagrama de Base de Datos](img_ApuntesCurso/Captura%20de%20pantalla%202024-05-06%20032614.jpeg)
