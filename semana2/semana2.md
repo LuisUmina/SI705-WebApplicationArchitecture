@@ -1,0 +1,152 @@
+# WEEK 2 - API
+
+## API
+Una API es una interfaz que conecta aplicaciones para que **compartan informacioon**.
+
+## REST
+* **Representational State Transfer**
+* Es una estilo de Arquitectura a la hora de realizar una comunicacioon entre cliente y servidor.
+* Rest es una arquitectura para APIs que se conectan viia web con el protocolo HTTP. Permite acceder a la infomacioon con identificadores uunicos.
+
+## Verbos HTTP
+Los verbos involucrados en un sistema REST son
+* **GET:** Se usaraa para solicitar consultas a los recursos
+* **POST:** Se usaraa para insertar nuevos recusos
+* **PUT/PATCH:** Se usará para actualizar recursos
+* **DELETE:** Se usará para borrar recursos
+
+## SPRING
+* Es un framework para el desarrollo de aplicaciones y contenedor de inversioon de control de coodigo abierto para la plataforma Java
+* La primera versioob fue escrita por *Rod Johnson*, quien lo lanzoo junto a la publicacioon de su libro *Expert One-on-One J2EE Design and Development*.
+    ### Spring Boot
+    * Es un proyecto de Spring que simplifica la configuracioon de aplicaciones Spring.
+    * Spring boot es un que nace con la finalidad de simplificar auun maas el desarrollo de aplicaciones basadas en framework Spring Core.
+    * Spring Boot busca que el desarrollador se centre en el desarrollo de la solucioon, olvidaandose por completo de la compleja configuracioon que actualmente tiene Spring Core para poder funcinar.
+    ### Features
+    * **Configuracioon:** Cuenta con un moodulo que autoconfigura todos los aspectos de la aplicacioon.
+    * **Resolucioon de Dependencias:** Solo debemos determinar el tipo de proyecto utilizaremos y el se encarga de resolver todas las *librerias / dependecias*.
+    * **Despliegue:** Se puede ejecutar como una aplicacioon Stand-alone, mediante un servidor web integrado, como es el caso de Tomcar, Jetty o Undertow.
+    * **Meetricas:** Cuenta con servicios que permite consultar el estado de salud de la aplicacioon, permitiendo saber si la aplicacion estaa prendida o apagada, memoria utilizada y disponible, etc.
+    * **Extensible:** Permite la creacioon de complementos, los cuales ayudan a que la comunidad de Software Libre cree nuevos moodulos que faciliten el desarrollo.
+
+# Creando un Proyecto para el Curso
+* **Paso 1:** Abrir IntelliJ IDEA
+* **Paso 2:** Crear un nuevo proyecto
+* **Paso 3:** Seleccionar Spring Initializr
+* **Paso 4:** Ingresar el nombre del proyecto
+* **Paso 5:** Seleccionar la ubicacioon del proyecto
+* **Paso 6:** Seleccionar el lenguaje de programacioon (Java)
+* **Paso 7:** Seleccionar el tipo de proyecto (Maven)   
+* **Paso 8:** Seleccionar el group (pe.edu.upc)
+* **Paso 9:** Seleccionar JDK (versioon 17)
+* **Paso 10:** Seleccionar la version de Spring Boot para el curso (versioon 3.2.4)
+* **Paso 10:** Agregar las dependencias necesarias
+    * Spring Web
+    * Spring Data JPA
+    * PostgreSQL Driver
+    * Spring Boot DevTools
+    * Lombok
+
+
+# Configuración del Archivo application.properties
+El archivo `application.properties` es utilizado en aplicaciones Spring Boot para configurar propiedades específicas de la aplicación, incluida la configuración de la base de datos.
+
+## Configuración de la Base de Datos
+
+```properties
+# Indica la base de datos a utilizar
+spring.jpa.database=postgresql
+
+# Determina si se generará un log de las queries que se ejecuten
+spring.jpa.show-sql=false
+
+# Determina la estrategia de creación de tablas por Hibernate
+spring.jpa.hibernate.ddl-auto=create
+
+# Indica la clase del controlador JDBC a utilizar
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+# Indica la URL de la base de datos
+spring.datasource.url=jdbc:postgresql://localhost/dbDemoClaseRosaSemana2(Nombre de la base de datos)
+
+# Indica el usuario de la base de datos
+spring.datasource.username=postgres
+
+# Indica la contraseña de la base de datos
+spring.datasource.password=1234 (contrasenia)
+```
+
+# Proyecto Demo
+APP para gestionar peliculas de una productora.
+## Product Backlog
+En la semana 2 se realizaraa la HU01 - HU02 - HU03 - HU04
+![Product Backlog](md_img/Captura%20de%20pantalla%202024-05-06%20032553.jpeg)
+
+## Diagrama de Base de Datos
+![Diagrama de Base de Datos](md_img/Captura%20de%20pantalla%202024-05-06%20032614.jpeg)
+
+---
+---
+---
+
+# MORE NOTES
+## Estereotipos de Spring
+### Component
+* **Propoosito:** Anotación que indica que una clase es un componente de Spring.
+* **Uso:** Para identificar clases genéricas gestionadas por Spring.
+### Controller
+* **Propósito:** Anotación que marca una clase como un controlador de Spring MVC.
+* Uso: Para gestionar solicitudes web, controlando el flujo de la aplicación y devolviendo respuestas.
+### Repository
+* **Propoosito:** Anotación que indica que una interfaz o clase es un repositorio, es decir, un componente responsable de acceder y gestionar datos.
+* **Uso:** Para definir interfaces que extienden JpaRepository o CrudRepository y proporcionar métodos para realizar operaciones de persistencia.
+### Service
+* **Propoosito:** Anotación que marca una clase como un servicio de Spring.
+* **Uso:** Para definir la lógica empresarial de la aplicación, gestionando operaciones y coordinando la interacción entre los componentes.
+
+## Estructura del Proyecto
+### Controllers
+* **Propoosito:** Carpeta que contiene los controladores de la aplicación.
+* **Uso:** Para organizar las clases que gestionan las solicitudes web y controlan el flujo de la aplicación.
+### Dtos
+* **Propoosito:** Carpeta que contiene los DTOs (Data Transfer Objects).
+* **Uso:** Para definir objetos que transportan datos entre la capa de presentación y la capa de servicio.
+### Entities
+* **Propoosito:** Carpeta que contiene las entidades de la aplicación.
+* **Uso:** Para definir clases que representan entidades de la base de datos y mapearlas a tablas.
+### Repositories
+* **Propoosito:** Carpeta que contiene los repositorios de la aplicación.
+* **Uso:** Para organizar las interfaces que definen operaciones de persistencia y acceso a datos.
+### ServiceImplements
+* **Propoosito:** Carpeta que contiene las implementaciones de servicios.
+* **Uso:** Para almacenar las clases que implementan la lógica de negocio definida en las interfaces de servicio.
+### ServiceInterfaces
+* **Prooosito:** Carpeta que contiene las interfaces de servicios.
+* **Uso:** Para definir interfaces que especifican los métodos que deben ser implementados por las clases de servicio.
+
+## Notaciones Comunes
+### @Entity
+* **Propoosito:** Anotación que marca una clase como una entidad de JPA.
+* **Uso:** Para mapear la clase a una tabla en la base de datos.
+### @Table(name = "nombre_tabla")
+* **Propoosito:** Anotacioon que especifica el nombre de la tabla en la base de datos.
+* **Uso:** Para personalizar el nombre de la tabla en la base de datos.
+### @Data
+* **Propoosito:** Anotación de Lombok que genera automáticamente getters, setters, toString(), equals(), y hashCode().
+* **Uso:** Para reducir el coodigo repetitivo.
+### @AllArgsConstructor
+* **Propoosito:** Anotacioon de Lombok que genera un constructor con todos los argumentos.
+* **Uso:** Para simplificar la creación de objetos inicializados con todos los atributos.
+### @NoArgsConstructor
+* **Propoosito:** Anotacioon de Lombok que genera un constructor sin argumentos.
+* **Uso:** Para simplificar la creacioon de objetos con valores predeterminados.
+### @Id
+* **Propoosito:** Anotacioon que marca un campo como clave primaria.
+* **Uso:** Para identificar el campo que actuua como clave primaria en la tabla de la base de datos.
+### @GeneratedValue(strategy = GenerationType.IDENTITY)
+* **Propoosito:** Anotacioon que especifica la estrategia de generacioon de valores de clave primaria.
+* **Uso:** Para indicar que la clave primaria se genera automaaticamente mediante una identidad de base de datos.
+### @Column(name = "Nombre", nullable = false, length = 20)
+* **Propoosito:** Anotacioon que especifica las propiedades de una columna en la base de datos.
+* **Uso:** Para definir el nombre de la columna, si es nullable y su longitud máxima.
+
