@@ -1,4 +1,4 @@
-# WEEK 2 - API
+# WEEK 2.1 - API
 
 ## API
 Una API es una interfaz que conecta aplicaciones para que **compartan informacioon**.
@@ -80,10 +80,10 @@ spring.datasource.password=1234 (contrasenia)
 APP para gestionar peliculas de una productora.
 ## Product Backlog
 En la semana 2 se realizaraa la HU01 - HU02 - HU03 - HU04
-![Product Backlog](md_img/Captura%20de%20pantalla%202024-05-06%20032553.jpeg)
+![Product Backlog](img_ApunterCurso/Captura%20de%20pantalla%202024-05-06%20032553.jpeg)
 
 ## Diagrama de Base de Datos
-![Diagrama de Base de Datos](md_img/Captura%20de%20pantalla%202024-05-06%20032614.jpeg)
+![Diagrama de Base de Datos](img_ApunterCurso/Captura%20de%20pantalla%202024-05-06%20032614.jpeg)
 
 ---
 ---
@@ -124,6 +124,9 @@ En la semana 2 se realizaraa la HU01 - HU02 - HU03 - HU04
 * **Prooosito:** Carpeta que contiene las interfaces de servicios.
 * **Uso:** Para definir interfaces que especifican los métodos que deben ser implementados por las clases de servicio.
 
+![Estructura del Proyecto](img_ApunterCurso/Captura%20de%20pantalla%202024-05-06%20152931.jpeg)
+
+
 ## Notaciones Comunes
 ### @Entity
 * **Propoosito:** Anotación que marca una clase como una entidad de JPA.
@@ -149,4 +152,78 @@ En la semana 2 se realizaraa la HU01 - HU02 - HU03 - HU04
 ### @Column(name = "Nombre", nullable = false, length = 20)
 * **Propoosito:** Anotacioon que especifica las propiedades de una columna en la base de datos.
 * **Uso:** Para definir el nombre de la columna, si es nullable y su longitud máxima.
+
+# WEEK 2.2 - API
+
+## Dependencias Agregadas al proyecto
+
+```xml
+        <!-- MODEL MAPPER --> <!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+        <!-- SWAGGER --> <!-- LINK -->
+        <dependency>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+```
+
+## Maas Notaciones Comunes
+### @RestController
+* **Propoosito:** Anotacioon que combina las anotaciones `@Controller` y `@ResponseBody`, lo que significa que Spring interpretaraa el resultado del meetodo como datos JSON.
+* **Uso:** Para marcar una clase como un controlador REST en Spring, que se encarga de gestionar las solicitudes HTTP y devolver respuestas en formato JSON.
+### @RequestMapping("/ruta")
+* **Propoosito:** Anotacioon que mapea las solicitudes HTTP a meetodos de controlador en clases anotadas con `@Controller`.
+* **Uso:** Para asignar una ruta de acceso base para todos los meetodos de controlador en una clase o un meetodo de controlador especiifico.
+### @GetMapping("/ruta")
+* **Propoosito:** Anotacioon que mapea las solicitudes HTTP GET a meetodos de controlador en clases anotadas con `@Controller`.
+* **Uso:** Para asignar una ruta de acceso especiifica a un meetodo de controlador que responde a solicitudes HTTP GET.
+### @PostMapping("/ruta")
+* **Propoosito:** Anotacioon que mapea las solicitudes HTTP POST a meetodos de controlador en clases anotadas con `@Controller`.
+* **Uso:** Para asignar una ruta de acceso especiifica a un meetodo de controlador que responde a solicitudes HTTP POST.
+### @PutMapping("/ruta")
+* **Propoosito:** Anotacioon que mapea las solicitudes HTTP PUT a meetodos de controlador en clases anotadas con `@Controller`.
+* **Uso:** Para asignar una ruta de acceso especiifica a un meetodo de controlador que responde a solicitudes HTTP PUT.
+
+### @DeleteMapping("/ruta")
+* **Propoosito:** Anotacioon que mapea las solicitudes HTTP DELETE a meetodos de controlador en clases anotadas con `@Controller`.
+* **Uso:** Para asignar una ruta de acceso especiifica a un meetodo de controlador que responde a solicitudes HTTP DELETE.
+### @RequestBody
+* **Propoosito:** Anotacioon que indica que un paraametro de meetodo deberiia estar vinculado al cuerpo de la solicitud HTTP.
+* **Uso:** Para indicar que el método del controlador espera recibir datos en formato JSON en el cuerpo de la solicitud HTTP.
+### @PathVariable
+* **Propoosito:** Anotación que se utiliza para vincular variables de plantilla de URI a parámetros de meetodo en un controlador de Spring MVC.
+* **Uso:** Para extraer valores de la URI de la solicitud y asignarlos a los paraametros del meetodo del controlador.
+### @Autowired
+* **Propoosito:** Anotacioon que se utiliza para realizar la inyeccioon de dependencias en Spring.
+* **Uso:** Para inyectar automaaticamente instancias de beans administradas por Spring en un campo, método o constructor.
+
+## ModelMapper
+El `ModelMapper` es una biblioteca de Java que simplifica el mapeo de objetos de un tipo a otro. En el contexto de una aplicación Spring Boot, se utiliza comúnmente para mapear entre entidades JPA y DTOs (Data Transfer Objects).
+### Ejemplo de Uso
+#### Insertar una nueva película
+``` java
+@PostMapping("/insertar")
+public void insertar(@RequestBody MovieDTO movieDTO) {
+    // Instancia de la clase ModelMapper
+    ModelMapper d = new ModelMapper();
+    
+    // Mapeo de un objeto DTO a una entidad Movie
+    Movie movie = d.map(movieDTO, Movie.class);
+    
+    // Llamada al método insert de la interfaz IMovieService
+    movieService.insert(movie);
+}
+```
+
+NOTA: 
+* @Autowired -> Siempre debe estr en el apartado de ServiceImplement (@Service)
+* Swagger -> La ruta para consultar el Swagger es: ```http://localhost:8080/swagger-ui.html```
+
+
+
 
