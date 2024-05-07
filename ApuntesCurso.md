@@ -238,3 +238,18 @@ En la semana 3 se realizaraa la HU03 - HU04 - HU05
 
 ## Diagrama de Base de Datos
 ![Diagrama de Base de Datos](img_ApuntesCurso/Captura%20de%20pantalla%202024-05-06%20032614.jpeg)
+
+
+
+# WEEK 3 - SPRING DATA JPA & SECURITY
+
+PENDING . . .
+
+# Proyecto Demo
+APP para gestionar peliculas de una productora.
+## Product Backlog
+En la semana 3 se realizaraa la HU06 - HU07 - HU08 - HU09 - HU10
+![Product Backlog](img_ApuntesCurso/Captura%20de%20pantalla%202024-05-06%20032553.jpeg)
+
+## Diagrama de Base de Datos
+![Diagrama de Base de Datos](img_ApuntesCurso/Captura%20de%20pantalla%202024-05-06%20032614.jpeg)

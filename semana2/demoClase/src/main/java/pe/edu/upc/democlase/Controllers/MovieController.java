@@ -24,6 +24,15 @@ public class MovieController {
         movieServiceInterface.insert(movie); //-> Llamada al método insert de la interfaz IMovieServiceInterface
     }
 
+    // -> HU extra
+    @PutMapping("/modificar")
+    public void modificar(@RequestBody MovieDTO movieDTO){
+        ModelMapper d = new ModelMapper();
+        Movie movie = d.map(movieDTO, Movie.class);
+        movieServiceInterface.insert(movie);
+    }
+
+
     @GetMapping("/listar") //-> Anotacion que indica la ruta del método
     public List<MovieDTO> listar() {
         return movieServiceInterface.list().stream().map( y ->{
