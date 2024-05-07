@@ -35,5 +35,10 @@ public class ReviewServiceImplement implements IReviewServiceInterface {
         return reviewRepository.sumPointsReviewByMovie();
     }
 
+    @Override
+    public List<Review> listaCriticasPorPelicula(String titulo) {
+        return reviewRepository.listaCriticasPorPelicula(titulo);
+    }
+
 
 }

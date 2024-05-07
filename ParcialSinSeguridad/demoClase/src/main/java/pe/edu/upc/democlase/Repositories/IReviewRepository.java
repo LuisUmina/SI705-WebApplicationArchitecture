@@ -2,6 +2,7 @@ package pe.edu.upc.democlase.Repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import pe.edu.upc.democlase.Entities.Review;
 
@@ -19,5 +20,10 @@ public interface IReviewRepository extends JpaRepository<Review, Integer> { // -
             "FROM movie m INNER JOIN review r ON m.id_movie = r.id_movie\n" +
             "GROUP BY m.title_movie", nativeQuery = true)
     public List<String[]> sumPointsReviewByMovie();
+
+    // -> Lista de criticas por pelicula
+
+    @Query("from Review r where r.movie.titleMovie=:titulo")
+    public List<Review> listaCriticasPorPelicula(@Param("titulo") String titulo);
 
 }

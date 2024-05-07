@@ -65,4 +65,12 @@ public class ReviewController {
         return dtoLista;
     }
 
+    @GetMapping("/listaDeCriticas")
+    public List<ReviewDTO> listaDeCriticas(@RequestParam String pelicula){
+        return reviewServiceInterface.listaCriticasPorPelicula(pelicula).stream().map(y -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(y, ReviewDTO.class);
+        }).collect(Collectors.toList());
+    }
+
 }
