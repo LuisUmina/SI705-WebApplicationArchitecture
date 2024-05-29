@@ -17,37 +17,37 @@ public class MovieController {
     @Autowired
     private IMovieServiceInterface mS;
 
-    @PostMapping("/registrar")
+    @PostMapping
     public void registrar(@RequestBody MovieDTO dtoM) {
         ModelMapper d = new ModelMapper();
         Movie movie = d.map(dtoM, Movie.class);
         mS.insert(movie);
     }
-    @PutMapping("/modificar")
+    @PutMapping()
     public void modificar(@RequestBody MovieDTO dto){
         ModelMapper m=new ModelMapper();
         Movie mo=m.map(dto,Movie.class);
         mS.insert(mo);
     }
-    @GetMapping("/listar")
+    @GetMapping
     public List<MovieDTO> list() {
         return mS.list().stream().map(y -> {
             ModelMapper c = new ModelMapper();
             return c.map(y, MovieDTO.class);
         }).collect(Collectors.toList());
     }
-    @DeleteMapping("/eliminarPorId/{id}")
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable("id") Integer id) {
         mS.delete(id);
     }
 
-    @GetMapping("/listarPorId/{id}")
+    @GetMapping("/{id}")
     public MovieDTO listarId(@PathVariable("id") Integer id) {
         ModelMapper m=new ModelMapper();
         MovieDTO dto=m.map(mS.listarId(id),MovieDTO.class);
         return dto;
     }
-    @GetMapping("/buscarPorAnioPublicacion")
+    @GetMapping("/buscar")
     public List<MovieDTO> buscar(@RequestParam int year) {
         return mS.findByYearPublication(year).stream().map(x->{
             ModelMapper m=new ModelMapper();
