@@ -1,0 +1,42 @@
+<p>LISTAR</p>
+<!--TRAERMOS EL CODIGO DE TABLE DE ALGULAR MATERIAL-->
+
+<div>
+    <!-- Declaramos el dataSource en el .ts -->
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">     
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="idMovie"> <!-- Aqui va lo del displayedColumns -->
+          <th mat-header-cell *matHeaderCellDef> ID :D </th>
+          <td mat-cell *matCellDef="let element"> {{element.idMovie}} </td> <!-- Aqui va los atributos tal cual esta en el model -->
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="titleMovie"> <!-- Aqui va lo del displayedColumns -->
+          <th mat-header-cell *matHeaderCellDef> Titulo :D </th>
+          <td mat-cell *matCellDef="let element"> {{element.titleMovie}} </td> <!-- Aqui va los atributos tal cual esta en el model -->
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="genderMovie"> <!-- Aqui va lo del displayedColumns -->
+          <th mat-header-cell *matHeaderCellDef> Genero :D </th>
+          <td mat-cell *matCellDef="let element"> {{element.genderMovie}} </td> <!-- Aqui va los atributos tal cual esta en el model -->
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="durationMovie"> <!-- Aqui va lo del displayedColumns -->
+          <th mat-header-cell *matHeaderCellDef> Duracion :D </th>
+          <td mat-cell *matCellDef="let element"> {{element.durationMovie}} </td> <!-- Aqui va los atributos tal cual esta en el model -->
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="yearLaunchMovie"> <!-- Aqui va lo del displayedColumns -->
+            <th mat-header-cell *matHeaderCellDef> Anio de lanzamiento :D </th>
+            <td mat-cell *matCellDef="let element"> {{element.yearLaunchMovie}} </td> <!-- Aqui va los atributos tal cual esta en el model -->
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+</div>
+

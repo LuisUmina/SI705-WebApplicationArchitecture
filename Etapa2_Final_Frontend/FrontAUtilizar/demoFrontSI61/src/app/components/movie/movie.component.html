@@ -1,0 +1,10 @@
+<!--Importarlo en el movie.component.ts-->
+<!-- El router outlet es para indicar que salga de su ruta previa y se dirige a lo que se indica posterior -->
+<router-outlet></router-outlet>
+
+
+<!-- Verifija si hay alguna direccion de este componente hijo, si es igual a cero, vas a salir y ir a ese componente-->
+<div [hidden]="route.children.length!==0">
+
+    <app-listarmovie></app-listarmovie>
+</div>
