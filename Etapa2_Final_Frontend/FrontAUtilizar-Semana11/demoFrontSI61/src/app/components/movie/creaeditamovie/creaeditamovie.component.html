@@ -1,0 +1,84 @@
+<p>Oli xd, estas en crea edita component</p>
+
+<div class="title-container"> REGISTRO DE PELICULONES </div>
+
+<div class="container">
+    <!--Agregamos formularios-->
+    <!-- Indicar que es de tipo formFroup y que ese grupo de elementos se va a llamar form | Este formulario va a tener un boton que nos va a permitir hacer un submit que redirige al metodo-->
+    <form [formGroup]="form" (submit)="aceptar()">
+        <!-- ***** NOMBRE ***** -->
+        <!--Agregamos el html de angular material  -->
+        <mat-form-field>
+            <mat-label>Nombre Pelicula</mat-label>
+            <!--Agregamos el atributo formControlName que tiene de nombre "nombre"-->
+            <input matInput formControlName="nombre">
+
+            <!--Mensaje adicional/opcional de error-->
+            <mat-error *ngIf="form.get('nombre')?.hasError('required')"> El nombre es obligatorio </mat-error>
+        </mat-form-field>
+
+        <br> <!--Salto de linea-->
+
+        <!-- ***** GENERO ***** -->
+        <mat-form-field>
+            <mat-label>Geenero</mat-label>
+            <!--Agregamos el atributo formControlName que tiene de nombre "nombre"-->
+            <mat-select formControlName="genero">
+                <!--Agregamos un ngFor que nos va a permitir recorrer la lista de generos que tenemos en el componente-->
+                <mat-option *ngFor="let g of listaGeneros" [value]="g.value">
+                    <!--Agregamos el atributo value que va a tener el valor de la genero-->
+                    {{g.viewValue}}
+                </mat-option>
+            </mat-select>
+            <!--Mensaje adicional/opcional de error-->
+            <mat-error *ngIf="form.get('genero')?.hasError('required')"> El genero es requerido </mat-error>
+        </mat-form-field>
+
+        <br> <!--Salto de linea-->
+
+        <!-- ***** SINOPSIS ***** -->
+        <mat-form-field>
+            <mat-label>Sinopsis:</mat-label>
+            <textarea matInput formControlName="sinopsis"></textarea>
+            <!--Mensaje adicional/opcional de error-->
+            <mat-error *ngIf="form.get('sinopsis')?.hasError('required')"> La sinopsis es requerido </mat-error>
+        </mat-form-field>
+          
+        <br> <!--Salto de linea-->
+
+        <!-- ***** DURACION ***** -->
+        <mat-form-field>
+            <mat-label>Duracion</mat-label>
+            <input matInput formControlName="duracion">
+            <!--Mensaje adicional/opcional de error-->
+            <!--tiene varias validaciones de erro-->
+            <mat-error *ngIf="form.get('duracion')?.hasError('required')"> La duracion es obligatorio </mat-error>
+            <mat-error *ngIf="form.get('duracion')?.hasError('min')"> La duracion minima es de 60 </mat-error>
+            <mat-error *ngIf="form.get('duracion')?.hasError('max')"> La duracion maxima es de 180 </mat-error>
+            <mat-error *ngIf="form.get('duracion')?.hasError('pattern')"> Ingrese una duracion valida </mat-error>
+        </mat-form-field>
+
+        <br> <!--Salto de linea-->
+
+        <!-- ***** ANIO DE LANZAMIENTO ***** -->
+        <mat-form-field>
+            <mat-label>Anio de Lanzamiento</mat-label>
+            <!--Agregamos el atributo formControlName que tiene de nombre "nombre"-->
+            <!--Aqui usamos un select nativo de html-->
+            <select matNativeControl formControlName="anio">
+                <option value="2021"> 2021 </option>
+                <option value="2022"> 2022 </option>
+                <option value="2023"> 2023 </option>
+            </select>
+            <!--Mensaje adicional/opcional de error-->
+            <mat-error *ngIf="form.get('anio')?.hasError('required')"> El anio es requerido </mat-error>
+        </mat-form-field>
+        
+        <br> <!--Salto de linea-->
+
+        <button mat-raised-button color="accent">Aceptar</button>
+
+    </form>
+</div>
+
+

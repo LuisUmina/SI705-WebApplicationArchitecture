@@ -1,0 +1,23 @@
+<!--AGREGA UN MENU DE TIPO ANGULAR MATERIAL-->
+<!--https://v17.material.angular.io/components/toolbar/overview-->
+
+<mat-toolbar color="accent">
+  <mat-icon>menu</mat-icon>
+  <button mat-button [matMenuTriggerFor] = "menuMovie">Peliculas</button>
+</mat-toolbar>
+
+<!--Agremos la etiqueta <mat-menu> que nos permitira formar el menu-->
+<!--Agregamos la referencia #menuMovie que hace referencia a la tecnologia matMenu-->
+<mat-menu #menuMovie = "matMenu">
+  <!--El routerLink nos permite acceder a nuestros componentes a partir de rutas-->
+  <!--Es IMPORTANTE tambien importar al router link -->
+  <button mat-menu-item routerLink = "/peliculas">Listar</button>
+
+
+  <!--SEMANA11: Nueno boton para crear editar-->
+  <button mat-menu-item routerLink = "/peliculas/nuevo">Registrar</button>
+
+</mat-menu>
+
+<!--El router-oulet nos permite navegar entre los componentes de nuestra aplicacion -->
+<router-outlet></router-outlet>
